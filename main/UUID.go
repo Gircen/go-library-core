@@ -1,4 +1,4 @@
-package library_core
+package main
 
 import (
 	"github.com/google/uuid"
