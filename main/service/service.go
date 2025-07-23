@@ -20,4 +20,5 @@ func RunServiceCore(config *config.Config) {
 	go logs.ReadLog()
 	println("run")
 	run(config)
+	println("service started")
 }
