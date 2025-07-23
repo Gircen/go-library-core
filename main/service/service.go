@@ -18,5 +18,6 @@ func run(config *config.Config) {
 
 func RunServiceCore(config *config.Config) {
 	go logs.ReadLog()
+	println("run")
 	run(config)
 }
