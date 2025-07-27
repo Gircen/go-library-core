@@ -2,22 +2,23 @@ package service
 
 import (
 	"github.com/Gircen/go-library-api/main/config"
-	"github.com/Gircen/go-library-core/main/logs"
 	"log"
 	"net/http"
 )
 
+var HttpServer = http.NewServeMux()
+
 func run(config *config.Config) {
-	http.HandleFunc("/healthCheck", HealthCheck)
+	HttpServer.HandleFunc("/healthCheck", HealthCheck)
 	log.Printf(config.Server.Host + ":" + config.Server.Port)
-	err := http.ListenAndServe(config.Server.Host+":"+config.Server.Port, nil)
+	err := http.ListenAndServe(config.Server.Host+":"+"3000", nil)
 	if err != nil {
 		println(err)
 	}
 }
 
 func RunServiceCore(config *config.Config) {
-	go logs.ReadLog()
+
 	println("run")
 	go run(config)
 	println("service stopped")

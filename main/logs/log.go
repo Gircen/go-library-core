@@ -1,20 +1,19 @@
 package logs
 
 import (
-	"bufio"
-	"fmt"
+	"github.com/Gircen/go-library-api/main/config"
+	"log"
 	"os"
-	"time"
 )
 
-func ReadLog() {
-	for {
-		scanner := bufio.NewScanner(os.Stdin)
-		for scanner.Scan() {
-			fmt.Println(scanner.Text())
-		}
-		time.Sleep(2000)
-		fmt.Println("run")
+func Log(config *config.Config, logger *log.Logger) {
+	f, err := os.OpenFile("app.log", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
+	if err != nil {
+		log.Fatal(err)
 	}
+	defer f.Close()
+
+	// Создаем логгер, который пишет в файл
+	logger = log.New(f, config.App.Name, log.LstdFlags)
 
 }
