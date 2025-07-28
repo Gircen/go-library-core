@@ -6,8 +6,6 @@ import (
 	"os"
 )
 
-var Logger log.Logger
-
 func Log(config *config.Config, logger *log.Logger) {
 	f, err := os.OpenFile("log/"+config.App.Name+".log", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
 	if err != nil {
