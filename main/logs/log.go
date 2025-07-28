@@ -15,17 +15,10 @@ func Log(config *config.Config) *log.Logger {
 	if err != nil {
 		return nil
 	}
-	f, err := os.OpenFile("log/"+config.App.Name+".log", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
+	f, err := os.OpenFile("log/"+config.App.Name+".log", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0777)
 	if err != nil {
 		log.Fatal(err)
 	}
-	defer func(f *os.File) {
-		err := f.Close()
-		if err != nil {
-			println(err)
-		}
-	}(f)
-
 	var logger = log.New(f, config.App.Name, log.LstdFlags)
 	mw := io.MultiWriter(os.Stdout, f)
 	logger.SetOutput(mw)
