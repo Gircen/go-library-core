@@ -2,6 +2,7 @@ package logs
 
 import (
 	"github.com/Gircen/go-library-api/main/config"
+	"io"
 	"log"
 	"os"
 )
@@ -26,5 +27,7 @@ func Log(config *config.Config) *log.Logger {
 	}(f)
 
 	var logger = log.New(f, config.App.Name, log.LstdFlags)
+	mw := io.MultiWriter(os.Stdout, f)
+	logger.SetOutput(mw)
 	return logger
 }
