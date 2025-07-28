@@ -7,13 +7,17 @@ import (
 )
 
 func Log(config *config.Config, logger *log.Logger) {
-	f, err := os.OpenFile("app.log", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
+	f, err := os.OpenFile("log/"+config.App.Name+".log", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
 	if err != nil {
 		log.Fatal(err)
 	}
-	defer f.Close()
+	defer func(f *os.File) {
+		err := f.Close()
+		if err != nil {
+			println(err)
+		}
+	}(f)
 
-	// Создаем логгер, который пишет в файл
 	logger = log.New(f, config.App.Name, log.LstdFlags)
 
 }
