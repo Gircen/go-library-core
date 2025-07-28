@@ -2,6 +2,7 @@ package config
 
 import (
 	"github.com/Gircen/go-library-api/main/config"
+	"github.com/Gircen/go-library-core/main/logs"
 	"gopkg.in/yaml.v3"
 	"log"
 	"os"
@@ -23,7 +24,10 @@ func GetConfig() *config.Config {
 	if err != nil {
 		log.Fatalf("Error convert YAML to data: %v", err)
 	}
+
+	logs.Logger = logs.Log(&cfg)
 	return &cfg
+
 }
 
 func GetYml(confPath string) []byte {

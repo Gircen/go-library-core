@@ -6,7 +6,14 @@ import (
 	"os"
 )
 
-func Log(config *config.Config, logger *log.Logger) {
+var Logger *log.Logger
+
+func Log(config *config.Config) *log.Logger {
+
+	err := os.MkdirAll("log/", os.ModePerm)
+	if err != nil {
+		return nil
+	}
 	f, err := os.OpenFile("log/"+config.App.Name+".log", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
 	if err != nil {
 		log.Fatal(err)
@@ -18,6 +25,6 @@ func Log(config *config.Config, logger *log.Logger) {
 		}
 	}(f)
 
-	logger = log.New(f, config.App.Name, log.LstdFlags)
-
+	var logger = log.New(f, config.App.Name, log.LstdFlags)
+	return logger
 }
