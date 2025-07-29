@@ -20,7 +20,7 @@ func GetConfig() {
 		yamlFile = GetYml("config/application.yaml")
 	}
 
-	err := yaml.Unmarshal(yamlFile, Conf)
+	err := yaml.Unmarshal(yamlFile, &Conf)
 	if err != nil {
 		log.Fatalf("Error convert YAML to data: %v", err)
 	}
