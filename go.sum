@@ -1,8 +1,5 @@
-github.com/Gircen/go-library-api v0.0.3/go.mod h1:WdcE/8wTpEFfQ1BPcKZRi1JYFXLUI8VrARfpQ9VuLxE=
-github.com/Gircen/go-library-api v0.0.5/go.mod h1:WdcE/8wTpEFfQ1BPcKZRi1JYFXLUI8VrARfpQ9VuLxE=
-github.com/Gircen/go-library-api v0.0.6 h1:GQYJMae5UXAwIhbf+ss/hURSbyX7pr1Dhh9tT76KKMQ=
-github.com/Gircen/go-library-api v0.0.6/go.mod h1:WdcE/8wTpEFfQ1BPcKZRi1JYFXLUI8VrARfpQ9VuLxE=
-github.com/Gircen/go-library-api v0.0.7/go.mod h1:WdcE/8wTpEFfQ1BPcKZRi1JYFXLUI8VrARfpQ9VuLxE=
+github.com/Gircen/go-library-api v0.0.12 h1:DjLtF5HDvB00mVKRqXIxMtQS/o8/r9aewzXXqXdvXv8=
+github.com/Gircen/go-library-api v0.0.12/go.mod h1:WdcE/8wTpEFfQ1BPcKZRi1JYFXLUI8VrARfpQ9VuLxE=
 github.com/google/uuid v1.6.0 h1:NIvaJDMOsjHA8n1jAhLSgzrAzy1Hgr+hNrb57e+94F0=
 github.com/google/uuid v1.6.0/go.mod h1:TIyPZe4MgqvfeYDBFedMoGGpEw/LqOeaOT+nhxU+yHo=
 gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405 h1:yhCVgyC4o1eVCa2tZl7eS0r+SDo693bJlVdllGtEeKM=

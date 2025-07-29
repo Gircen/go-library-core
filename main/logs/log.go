@@ -11,21 +11,27 @@ import (
 var Logger *log.Logger
 
 func Warn(v ...any) {
-	if logEnum.IsLog(conf.Conf.Log.Level, logEnum.WARN) {
+	if logEnum.WARN.IsLog(conf.Conf.Log.Level) {
 		Logger.Println(logEnum.WARN.String(), v)
 	}
 }
 
 func Error(v ...any) {
-	Logger.Println(logEnum.ERROR.String(), v)
+	if logEnum.ERROR.IsLog(conf.Conf.Log.Level) {
+		Logger.Println(logEnum.ERROR.String(), v)
+	}
 }
 
 func Info(v ...any) {
-	Logger.Println(logEnum.INFO.String(), v)
+	if logEnum.INFO.IsLog(conf.Conf.Log.Level) {
+		Logger.Println(logEnum.INFO.String(), v)
+	}
 }
 
 func Debug(v ...any) {
-	Logger.Println(logEnum.DEBUG.String(), v)
+	if logEnum.DEBUG.IsLog(conf.Conf.Log.Level) {
+		Logger.Println(logEnum.DEBUG.String(), v)
+	}
 }
 
 func Log() *log.Logger {

@@ -1,4 +1,4 @@
-package config
+package conf
 
 import (
 	"github.com/Gircen/go-library-api/main/config"
@@ -8,7 +8,9 @@ import (
 	"os"
 )
 
-func GetConfig() *config.Config {
+var Conf *config.Config
+
+func GetConfig() {
 
 	confPath, found := os.LookupEnv("MS_CONFIG")
 	var yamlFile []byte
@@ -19,14 +21,12 @@ func GetConfig() *config.Config {
 		yamlFile = GetYml("config/application.yaml")
 	}
 
-	var cfg config.Config
-	err := yaml.Unmarshal(yamlFile, &cfg)
+	err := yaml.Unmarshal(yamlFile, Conf)
 	if err != nil {
 		log.Fatalf("Error convert YAML to data: %v", err)
 	}
 
-	logs.Logger = logs.Log(&cfg)
-	return &cfg
+	logs.Logger = logs.Log()
 
 }
 
