@@ -17,7 +17,8 @@ func run() {
 	}
 }
 
-func RunServiceCore() {
-	logs.Info("start service")
+func Init() {
+	conf.GetConfig()
+	logs.Logger = logs.Log()
 	go run()
 }
