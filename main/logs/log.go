@@ -40,18 +40,17 @@ func Debug(v ...any) {
 	}
 }
 
-func Log() *log.Logger {
+func Log() {
 
 	err := os.MkdirAll("log/", os.ModePerm)
 	if err != nil {
-		return nil
+		log.Fatal(err)
 	}
 	f, err := os.OpenFile("log/"+conf.Conf.App.Name+".log", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0777)
 	if err != nil {
 		log.Fatal(err)
 	}
-	var logger = log.New(f, conf.Conf.App.Name, log.LstdFlags|log.Llongfile)
+	Logger = log.New(f, conf.Conf.App.Name, log.LstdFlags|log.Llongfile)
 	mw := io.MultiWriter(os.Stdout, f)
-	logger.SetOutput(mw)
-	return logger
+	Logger.SetOutput(mw)
 }

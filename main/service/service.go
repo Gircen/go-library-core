@@ -19,6 +19,6 @@ func run() {
 
 func Init() {
 	conf.GetConfig()
-	logs.Logger = logs.Log()
+	logs.Log()
 	go run()
 }
