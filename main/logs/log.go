@@ -16,6 +16,12 @@ func Warn(v ...any) {
 	}
 }
 
+func FatalError(v ...any) {
+	if logEnum.ERROR.IsLog(conf.Conf.Log.Level) {
+		Logger.Fatalln(logEnum.ERROR.String(), v)
+	}
+}
+
 func Error(v ...any) {
 	if logEnum.ERROR.IsLog(conf.Conf.Log.Level) {
 		Logger.Println(logEnum.ERROR.String(), v)
