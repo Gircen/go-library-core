@@ -36,12 +36,11 @@ func Info(v ...any) {
 
 func Debug(v ...any) {
 	if logEnum.DEBUG.IsLog(conf.Conf.Log.Level) {
-		Logger.Println(logEnum.DEBUG.String(), v)
+		Logger.Print(logEnum.DEBUG.String(), v)
 	}
 }
 
 func Log() {
-
 	err := os.MkdirAll("log/", os.ModePerm)
 	if err != nil {
 		log.Fatal(err)
@@ -50,7 +49,7 @@ func Log() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	Logger = log.New(f, conf.Conf.App.Name, log.LstdFlags|log.Llongfile)
+	Logger = log.New(f, conf.Conf.App.Name+" ", log.LstdFlags)
 	mw := io.MultiWriter(os.Stdout, f)
 	Logger.SetOutput(mw)
 }
